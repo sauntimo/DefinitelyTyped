@@ -93,10 +93,10 @@ declare namespace request {
         path: string;
     }
 
-    interface Response extends NodeJS.ReadableStream {
+    interface Response<TBody = any, THeader = any> extends NodeJS.ReadableStream {
         accepted: boolean;
         badRequest: boolean;
-        body: any;
+        body: TBody;
         charset: string;
         clientError: boolean;
         error: ResponseError;
@@ -104,7 +104,7 @@ declare namespace request {
         forbidden: boolean;
         get(header: string): string;
         get(header: 'Set-Cookie'): string[];
-        header: any;
+        header: THeader;
         info: boolean;
         links: object;
         noContent: boolean;
